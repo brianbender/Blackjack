@@ -39,15 +39,17 @@ namespace Blackjack
                 }
 
                 var yourCards = GetCardValue(yourHand.Item1) + GetCardValue(yourHand.Item2) + GetCardValue(newCard);
-                if (yourCards < GetCardValue(dealerHand.Item1) + GetCardValue(dealerHand.Item2) || yourCards > 21)
+                var dealersCards = GetCardValue(dealerHand.Item1) + GetCardValue(dealerHand.Item2);
+                if (yourCards <= dealersCards || yourCards > 21)
                 {
                     money -= 25;
-                    Console.WriteLine($"You did a blackjack and lost. You now have ${money} (-$25)");
+                    var loseMessage = yourCards > 21 ? "You busted!" : "You lost!";
+                    Console.WriteLine($"You had {yourCards} and dealer had {dealersCards}. {loseMessage} You now have ${money} (-$25)");
                 }
                 else
                 {
                     money += 25;
-                    Console.WriteLine($"You did a blackjack and won. You now have ${money} (+$25).");
+                    Console.WriteLine($"You had {yourCards} and dealer had {dealersCards}. You won! You now have ${money} (+$25).");
                 }
                 if (money >= 1000)
                 {
