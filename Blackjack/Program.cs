@@ -19,12 +19,14 @@ namespace Blackjack
                 Console.WriteLine($"The dealer is showing a {GetCardName(dealerHand.Item1)}. Do you (h)it or (s)tay?");
 
                 var input = Console.ReadKey().KeyChar.ToString();
+                Console.WriteLine();
                 while (input != "h" && input != "s")
                 {
                     Console.WriteLine("Do you (h)it or (s)tay?");
                     input = Console.ReadKey().KeyChar.ToString();
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
+
                 if (input == "s")
                 {
                     Console.WriteLine(Environment.NewLine +
@@ -35,21 +37,47 @@ namespace Blackjack
                 {
                     var random = new Random();
                     newCard = random.Next(1, 14);
-                    Console.WriteLine($"The dealer slides another card to you. It's a {GetCardName(newCard)}.");
+                    var n = "";
+                    if (newCard == 1)
+                    {
+                        n = "n";
+                    }
+                    Console.WriteLine($"The dealer slides another card to you. It's a{n} {GetCardName(newCard)}.");
                 }
 
                 var yourCards = GetCardValue(yourHand.Item1) + GetCardValue(yourHand.Item2) + GetCardValue(newCard);
                 var dealersCards = GetCardValue(dealerHand.Item1) + GetCardValue(dealerHand.Item2);
-                if (yourCards <= dealersCards || yourCards > 21)
+
+                if (dealersCards < 17)
+                {
+                    var random = new Random();
+                    newCard = random.Next(1, 14);
+                    var n = "";
+                    if (newCard == 1)
+                    {
+                        n = "n";
+                    }
+                    Console.WriteLine($"The dealer adds another card to their hand. It's a{n} {GetCardName(newCard)}.");
+                    dealersCards += newCard;
+                }
+
+                if (yourCards < dealersCards || yourCards > 21)
                 {
                     money -= 25;
                     var loseMessage = yourCards > 21 ? "You busted!" : "You lost!";
-                    Console.WriteLine($"You had {yourCards} and dealer had {dealersCards}. {loseMessage} You now have ${money} (-$25)");
+                    Console.WriteLine(
+                        $"You had {yourCards} and dealer had {dealersCards}. {loseMessage} You now have ${money} (-$25)");
+                }
+                else if (yourCards == dealersCards)
+                {
+                    Console.WriteLine(
+                        $"You had {yourCards} and dealer had {dealersCards}. It's a push! You now have ${money} (+$0))");
                 }
                 else
                 {
                     money += 25;
-                    Console.WriteLine($"You had {yourCards} and dealer had {dealersCards}. You won! You now have ${money} (+$25).");
+                    Console.WriteLine(
+                        $"You had {yourCards} and dealer had {dealersCards}. You won! You now have ${money} (+$25).");
                 }
                 if (money >= 1000)
                 {
