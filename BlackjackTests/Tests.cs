@@ -2,7 +2,7 @@
 
 namespace BlackjackTests
 {
-  public class Class1
+  public class Tests
   {
   }
 }
