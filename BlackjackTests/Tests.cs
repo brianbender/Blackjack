@@ -1,10 +1,15 @@
-﻿using System;
+﻿using NUnit.Framework;
 
 namespace BlackjackTests
 {
-  public class Tests
-  {
-  }
+    [TestFixture]
+    public class Tests
+    {
+        [Test]
+        public void Test()
+        {
+            //TODO: Write my tests
+            Assert.Pass();
+        }
+    }
 }
-
-
