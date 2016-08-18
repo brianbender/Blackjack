@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using Blackjack;
+using NUnit.Framework;
 
 namespace BlackjackTests
 {
@@ -8,7 +9,8 @@ namespace BlackjackTests
         [Test]
         public void Test()
         {
-            //TODO: Write my tests
+            var program = new Program();
+            //TODO: Test my code
             Assert.Pass();
         }
     }
