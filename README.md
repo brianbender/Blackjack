@@ -18,19 +18,19 @@ Story cards were issued primarily out of the low value cards. It became clear in
 
 When starting the kata, issue random cards from the 1-2 point cards.
 
-Aces are worth 1 or 11 (1 point)
-Blackjack is worth bonus money (1 point)
-Wagers are paid out 3:2 (1 point)
-Natural blackjack wins even when pushed (1 point)
-User can hit multiple times (2 points)
-Player can pick amount wagered (2 points)
-Double down (3 points)
-Split hand (3 points)
-Insurance (3 points)
+* Aces are worth 1 or 11 (1 point)
+* Blackjack is worth bonus money (1 point)
+* Wagers are paid out 3:2 (1 point)
+* Natural blackjack wins even when pushed (1 point)
+* User can hit multiple times (2 points)
+* Player can pick amount wagered (2 points)
+* Double down (3 points)
+* Split hand (3 points)
+* Insurance (3 points)
 
 See https://en.wikipedia.org/wiki/Blackjack for information on story meanings
 
-#### Known bugs
+#### Bugs
 
 There are a number of issues in the initial untested codebase. It is recommended to track bugs found by the users when reported to you and fixed.
 
